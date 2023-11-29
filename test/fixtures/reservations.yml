@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users: one
+  flights: one
+  date: 2023-11-29
+  city: MyString
+
+two:
+  users: two
+  flights: two
+  date: 2023-11-29
+  city: MyString
