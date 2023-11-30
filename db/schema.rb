@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_225305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "flights", force: :cascade do |t|
+  create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "available"
@@ -25,12 +25,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_225305) do
 
   create_table "reservations", force: :cascade do |t|
     t.bigint "users_id", null: false
-    t.bigint "flights_id", null: false
-    t.date "date"
-    t.string "city"
+    t.bigint "meals_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["flights_id"], name: "index_reservations_on_flights_id"
+    t.index ["meals_id"], name: "index_reservations_on_meals_id"
     t.index ["users_id"], name: "index_reservations_on_users_id"
   end
 
@@ -38,10 +36,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_225305) do
     t.string "username"
     t.string "password"
     t.string "email"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "reservations", "flights", column: "flights_id"
+  add_foreign_key "reservations", "meals", column: "meals_id"
   add_foreign_key "reservations", "users", column: "users_id"
 end

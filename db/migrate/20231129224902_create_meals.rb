@@ -1,6 +1,6 @@
-class CreateFlights < ActiveRecord::Migration[7.1]
+class CreateMeals < ActiveRecord::Migration[7.1]
   def change
-    create_table :flights do |t|
+    create_table :meals do |t|
       t.string :name
       t.string :description
       t.string :available

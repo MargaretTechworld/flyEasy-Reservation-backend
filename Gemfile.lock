@@ -84,9 +84,6 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
@@ -180,8 +177,6 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2023.3)
-      tzinfo (>= 1.0.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -194,14 +189,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  debug
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
-  tzinfo-data
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.22
+   2.3.15
