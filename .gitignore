@@ -33,4 +33,9 @@
 /config/master.key
 
 node_modules/
+
 vendor/
+
+Gemfile
+
+Gemfile.lock
