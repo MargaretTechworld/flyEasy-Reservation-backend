@@ -7,11 +7,9 @@ class Api::V1::MealsController < ApplicationController
     render json: @meals, status: :ok
   end
 
-  def show
-  end
+  def show; end
 
-  def new
-  end
+  def new; end
 
   private
 
