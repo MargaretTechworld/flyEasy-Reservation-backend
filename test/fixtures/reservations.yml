@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  meal: one
+  reserve_time: 2023-11-30 20:37:56
+  quantity: 1
+  spicy_level: MyString
+
+two:
+  user: two
+  meal: two
+  reserve_time: 2023-11-30 20:37:56
+  quantity: 1
+  spicy_level: MyString
