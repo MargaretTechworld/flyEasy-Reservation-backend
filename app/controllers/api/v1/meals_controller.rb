@@ -1,25 +1,40 @@
 class Api::V1::MealsController < ApplicationController
-  before_action :meal_find_id, only: %i[show destroy]
-
 
   def index
-    @meals = Meals.all
+    @meals = Meal.all
     render json: @meals, status: :ok
   end
 
-  def show
-  end
+def show
+  @meal = Meals.find(params[:id])
+  render json: @meals, status: :ok
+end
 
-  def new
+def create
+  if current_user.admin?
+  @meal =Meal.new(meal_params)
+  if @meal.save
+  render json: @meals, status: :ok
+  else
+    render json: {}
   end
+end
+end
+
+def destroy
+  if current_user.admin?
+  @meal = Meals.find(params[:id])
+  if @meals.destroy
+    head :no_content
+  end
+  end
+end
 
   private
 
-  def meal_find_id
-    @meal = Meals.find(params[:id])
-  end
+
 
   def meal_params
-    params.require(:meals).permit(:name, :description, :price)
+    params.require(:meals).permit(:name, :description, :price, :available, :photo)
   end
 end
