@@ -1,7 +1,7 @@
 # meals_controller.rb
 class Api::V1::MealsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_admin, only: %i[create destroy]
+  before_action :check_admin, only: %i[create destroy meals_available update_availability]
 
   def index
     @meals = Meal.where(available: true).order('created_at desc')
@@ -9,7 +9,7 @@ class Api::V1::MealsController < ApplicationController
   end
 
   def meals_available
-    @meals = current_user.meals
+    @meals = current_user.meals.order(created_at: :desc)
     render json: @meals, status: :ok
   end
 
@@ -33,6 +33,15 @@ class Api::V1::MealsController < ApplicationController
       head :no_content
     else
       render json: { errors: 'Failed to destroy meal' }, status: :unprocessable_entity
+    end
+  end
+
+  def update_availability
+    @meal = current_user.meals.find(params[:id])
+    if @meal.update(available: !@meal.available)
+      render json: { message: 'Availability updated successuflly', available: @meal.available }
+    else
+      render json: @meal.errors.full_messages, status: :unprocessable_entity
     end
   end
 

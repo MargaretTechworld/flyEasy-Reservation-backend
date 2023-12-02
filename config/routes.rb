@@ -11,9 +11,14 @@ Rails.application.routes.draw do
 
   get"user_profile", to: "members#index"
   get "meals_available", to: "api/v1/meals#meals_available"
+
   namespace :api do
     namespace :v1 do
-      resources :meals
+      resources :meals do
+        member do
+          patch "update_availability"
+        end
+      end
     end
   end
 
