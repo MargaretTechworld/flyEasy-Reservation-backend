@@ -5,5 +5,6 @@ class User < ApplicationRecord
          jwt_revocation_strategy: self
   has_many :meals
   has_many :reservations
-  has_many :meals, through: :reservations
+
+  validates :name, presence: true
 end

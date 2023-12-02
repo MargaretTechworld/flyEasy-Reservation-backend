@@ -8,9 +8,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  get"user_profile", to: "members#index"
+  get "meals_available", to: "api/v1/meals#meals_available"
   namespace :api do
     namespace :v1 do
-    resources :meals, only: [:index, :show, :create, :destroy]
+      resources :meals
     end
   end
 

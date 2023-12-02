@@ -46,6 +46,6 @@ group :development do
 end
 
 gem 'devise'
-gem "devise-jwt"
-gem "jsonapi-serializer"
-gem 'cancancan'
+gem 'devise-jwt'
+gem 'cancancan'gem 'jsonapi-serializer'
+
