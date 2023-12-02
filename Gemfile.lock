@@ -86,9 +86,6 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -231,7 +228,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   cancancan
-  debug
   devise
   devise-jwt
   jsonapi-serializer
@@ -239,9 +235,10 @@ DEPENDENCIES
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.2)
+  tzinfo-data
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.3.15
+   2.4.22
