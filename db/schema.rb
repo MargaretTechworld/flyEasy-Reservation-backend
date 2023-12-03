@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_205701) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_02_102834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_205701) do
     t.string "name"
     t.text "description"
     t.decimal "price", precision: 10, scale: 2
-    t.boolean "available"
     t.text "photo"
+    t.boolean "available", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,20 +32,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_205701) do
     t.time "reserve_time"
     t.integer "quantity"
     t.string "spicy_level"
+    t.date "reserve_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "reserve_date"
     t.index ["meal_id"], name: "index_reservations_on_meal_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.text "password_digest"
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
+    t.string "name"
     t.boolean "admin"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "meals", "users"
