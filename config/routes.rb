@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get"user_profile", to: "members#index"
+  get "user_profile", to: "members#index"
   get "meals_available", to: "api/v1/meals#meals_available"
 
   namespace :api do
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
           patch "update_availability"
         end
       end
+
+      resources :reservations, only: [:index, :destroy, :new]
     end
   end
-
 end
