@@ -14,5 +14,8 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def new
+    @reserve = Reserve.new
+  end
 
 end
