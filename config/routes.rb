@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :meals do
+        resources :reservations, only: [:create]
         member do
           patch "update_availability"
         end
       end
-
-      resources :reservations, only: [:index, :destroy, :new]
+      resources :reservations, only: [:index, :show, :destroy]
     end
   end
 end
