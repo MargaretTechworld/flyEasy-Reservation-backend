@@ -9,14 +9,14 @@ class Api::V1::ReservationsController < ApplicationController
   def destroy
     @reservation = current_user.reservations.find(params[:id])
     if @reservation.destroy
-      redirect_to reservations_path, notice: 'Reservation was successfully deleted.'
+      head :no_content
     else
       flash.now[:error] = 'Error: Reservation could not be deleted'
     end
   end
 
   def create
-    current_user
+    @reservations = current_user.reservations.new(reservations_params)
   end
 
 end
