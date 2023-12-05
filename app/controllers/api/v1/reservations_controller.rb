@@ -3,7 +3,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def index
     @reservations = @user.reservations.all
-    render json: registrations
+    render json: reservations
   end
 
   def destroy
