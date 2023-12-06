@@ -22,9 +22,11 @@ default: &default
 development:
   <<: *default
   database: fly_easy_reservation_backend_development
+  username: bran
+  password: 78627860
   username: postgres
-  password: JESUS
   password: Bahati@123
+
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -59,8 +61,9 @@ development:
 test:
   <<: *default
   database: fly_easy_reservation_backend_test
+  username: bran
+  password: 78627862
   username: postgres
-  password: JESUS
   password: Bahati@123
 
 # As with config/credentials.yml, you never want to store sensitive information,
