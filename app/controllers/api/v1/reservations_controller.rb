@@ -8,7 +8,7 @@ class Api::V1::ReservationsController < ApplicationController
         reservation: {
           id: reservation.id,
           quantity: reservation.quantity,
-          reserve_time: reservation.reserve_time.strftime("%H:%M"),
+          reserve_time: reservation.reserve_time.strftime('%H:%M'),
           spicy_level: reservation.spicy_level,
           reserve_date: reservation.reserve_date
         },
