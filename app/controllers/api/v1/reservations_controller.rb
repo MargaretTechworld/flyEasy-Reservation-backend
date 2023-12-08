@@ -2,13 +2,28 @@ class Api::V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reservations = current_user.reservations.all
-    render json: @reservations, status: :ok
-  end
-
-  def show
-    @reservation = current_user.reservations.find(params[:id])
-    render json: @reservation, status: :ok
+    @reservations = current_user.reservations.includes(:meal).all
+    serialized_reservations = @reservations.map do |reservation|
+      {
+        reservation: {
+          id: reservation.id,
+          quantity: reservation.quantity,
+          reserve_time: reservation.reserve_time,
+          spicy_level: reservation.spicy_level,
+          reserve_date: reservation.reserve_date
+        },
+        meal: {
+          id: reservation.meal.id,
+          name: reservation.meal.name,
+          photo: reservation.meal.photo,
+          price: reservation.meal.price
+        },
+        total: {
+          total_price: reservation.quantity.to_f * reservation.meal.price
+        }
+      }
+    end
+    render json: serialized_reservations, status: :ok
   end
 
   def destroy
