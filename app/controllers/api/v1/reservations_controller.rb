@@ -39,7 +39,7 @@ class Api::V1::ReservationsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @reservation = @meal.reservations.new(reservation_params.merge(user: current_user))
     if @reservation.save
-      render json: @reservation, status: 'Created'
+      render json: @reservation, status: :ok
     else
       render json: { data: @reservation.errors.full_messages, message: "Couldn't create the reservation" },
              status: :unprocessable_entity
