@@ -37,12 +37,24 @@ class Api::V1::ReservationsController < ApplicationController
 
   def create
     @meal = Meal.find(params[:meal_id])
-    @reservation = @meal.reservations.new(reservation_params.merge(user: current_user))
-    if @reservation.save
-      render json: @reservation, status: :ok
+    existing_reservation = current_user.reservations.find_by(
+      meal: @meal,
+      reserve_time: params[:reservation][:reserve_time],
+      reserve_date: params[:reservation][:reserve_date],
+      spicy_level: params[:reservation][:spicy_level]
+    )
+    if existing_reservation
+      new_quantity = existing_reservation.quantity + params[:reservation][:quantity].to_i
+      existing_reservation.update(quantity: new_quantity)
+      render json: existing_reservation, status: :ok
     else
-      render json: { data: @reservation.errors.full_messages, message: "Couldn't create the reservation" },
-             status: :unprocessable_entity
+      @reservation = @meal.reservations.new(reservation_params.merge(user: current_user))
+      if @reservation.save
+        render json: @reservation, status: :ok
+      else
+        render json: { data: @reservation.errors.full_messages, message: "Couldn't create the reservation" },
+               status: :unprocessable_entity
+      end
     end
   end
 
