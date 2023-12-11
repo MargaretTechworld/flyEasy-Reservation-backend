@@ -26,7 +26,10 @@ development:
   password: joydeveloper
   username: postgres
   password: Bahati@123
-
+  username: postgres
+  password: 08121992@
+  host: localhost
+  port: 5432
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -65,6 +68,10 @@ test:
   password: joydeveloper
   username: postgres
   password: Bahati@123
+  username: postgres
+  password: 08121992@
+  host: localhost
+  port: 5432
 
 
 # As with config/credentials.yml, you never want to store sensitive information,

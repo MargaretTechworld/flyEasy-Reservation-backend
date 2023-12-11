@@ -7,15 +7,16 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
 
   describe 'GET #index' do
     it 'returns a list of user reservations with meal details' do
-      normal_user = User.create(email: 'admin@example.com', password: 'password', name: 'Admin User', admin: false)
-      meal1 = Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user, available: true, photo:"image.jpg")
-      sign_in normal_user
-      reservation1 = Reservation.create(reserve_time: '12:00', quantity: 2, spicy_level: 'medium',reserve_date: '2023-01-01', user: normal_user, meal: meal1)
-      get :index
-      reservations_response = JSON.parse(response.body)
+      normal_user = User.create(email: 'user@example.com', password: 'password', name: 'Normal User', admin: false)
+    meal1 = Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: normal_user, available: true, photo: 'image.jpg')
+    reservation1 = Reservation.create(reserve_time: '12:00', quantity: 2, spicy_level: 'medium', reserve_date: '2023-01-01', user: normal_user, meal: meal1)
+    sign_in normal_user
+    get :index
+    reservations_response = JSON.parse(response.body)
 
-      expect(response).to have_http_status(:ok)
-      expect(reservations_response.count).to eq(1)
+    expect(response).to have_http_status(:ok)
+    expect(reservations_response.count).to eq(1)
+
     end
   end
 
@@ -57,7 +58,7 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
           reserve_date: reservation.reserve_date
         }
 
-        post :create, params: { meal_id: meal.id, reservation: reservation_params }
+        post :create, params: { meal_id: meal.id, reservation: reservation_params }, format: :json
         updated_reservation = Reservation.find(reservation.id)
 
         expect(response).to have_http_status(:ok)
