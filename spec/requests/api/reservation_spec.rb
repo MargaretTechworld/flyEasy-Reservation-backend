@@ -60,5 +60,19 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       expect(response).to have_http_status(:unauthorized)
     end
   end
+  describe 'DELETE #destroy' do
+    it 'deletes the reservation' do
+      admin_user = User.create(email: 'admin@example.com', password: 'password', name: 'Admin User', admin: true)
+      sign_in admin_user
+
+      meal = Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user, available: true, photo:"image.jpg")
+      reservation = Reservation.create(reserve_time: '12:00', quantity: 2, spicy_level: 'medium', reserve_date: '2023-01-01', user: admin_user, meal: meal)
+
+      delete :destroy, params: { id: reservation.id }
+
+      expect(response).to have_http_status(:no_content)
+      expect { Reservation.find(reservation.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 
 end
