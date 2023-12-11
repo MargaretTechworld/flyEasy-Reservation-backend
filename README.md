@@ -26,7 +26,7 @@
 
 # 📖 Workspace <a name="about-project"></a>
 
-The **Meal Connect** MealConnect is a vibrant web application designed for those who appreciate the art of cooking and the pleasure of savoring exquisite meals. Dive into a world of flavors, discover new recipes, and make customized reservations based on your taste buds. It is a Ruby on Rails app with a PostgreSQL database for the backend and Rails/Redux for the frontend.
+The **Meal Connect** MealConnect is a vibrant web application designed for those who appreciate the art of cooking and the pleasure of savoring exquisite meals. Dive into a world of flavors, discover new recipes, and make customized reservations based on your taste buds. It is a Ruby on Rails app with a PostgreSQL database for the backend and React/Redux for the frontend.
 
 This repository contains the backend part of the project. The frontend part can be found [here](https://github.com/MargaretTechworld/meal_connect-frontend)
 
