@@ -2,7 +2,7 @@ class Api::V1::ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reservations = current_user.reservations.includes(:meal).all
+    @reservations = current_user.reservations.includes(:meal).all.order('created_at desc')
     serialized_reservations = @reservations.map do |reservation|
       {
         reservation: {
