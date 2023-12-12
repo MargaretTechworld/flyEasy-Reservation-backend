@@ -13,11 +13,11 @@ RSpec.describe 'User Sessions API', type: :request do
       expect(JSON.parse(response.body)['data']['name']).to eq(user.name)
     end
 
-    # it 'returns an error with invalid credentials' do
-    #   post '/login', params: { user: { email: user.email, password: 'wrong_password' } }
+    it 'returns an error with invalid credentials' do
+      post '/login', params: { user: { email: user.email, password: 'wrong_password' } }
 
-    #   expect(response).to have_http_status(:unauthorized)
-    # end
+      expect(response).to have_http_status(:unauthorized)
+    end
 
     # it 'logs out successfully' do
     #   user = User.create(email: 'test@example.com', password: 'password', name: 'John Doe')
