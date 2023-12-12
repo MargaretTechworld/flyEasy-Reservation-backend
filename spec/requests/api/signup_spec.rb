@@ -16,13 +16,11 @@ RSpec.describe 'User Registrations API', type: :request do
         required: %w[email password name]
       }
 
-
       response '422', 'unprocessable entity' do
         let(:user) { { email: '', password: '', name: '' } }
         run_test! do
           expect(response).to have_http_status(:unprocessable_entity)
           expect(JSON.parse(response.body)['status']['code']).to eq(422)
-          # ... other expectations
         end
       end
     end
