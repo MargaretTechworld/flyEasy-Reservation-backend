@@ -92,6 +92,6 @@ test:
 #
 production:
   <<: *default
-  database: fly_easy_reservation_backend_production
-  username: fly_easy_reservation_backend
-  password: <%= ENV["FLY_EASY_RESERVATION_BACKEND_DATABASE_PASSWORD"] %>
+  database: meal_connect_backend_production
+  username: meal_connect_backend_backend
+  password: <%= ENV["MEAL_CONNECT_BACKEND_DATABASE_PASSWORD"] %>
