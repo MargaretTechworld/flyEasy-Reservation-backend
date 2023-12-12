@@ -11,9 +11,12 @@ RSpec.describe Api::V1::MealsController, type: :controller do
         admin_user = User.create(email: 'admin@example.com', password: 'password', name: 'Admin User', admin: true)
         sign_in admin_user
 
-        meal1 = Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user, available: true, photo:"image.jpg")
-        meal2 = Meal.create(name: 'Meal 2', description: 'Another tasty meal', price: 12.99, user: admin_user, available: true, photo:"image.jpg")
-        meal3 = Meal.create(name: 'Meal 3', description: 'Yummy dish', price: 8.99, user: admin_user, available: true, photo:"image.jpg")
+        Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user,
+                    available: true, photo: 'image.jpg')
+        Meal.create(name: 'Meal 2', description: 'Another tasty meal', price: 12.99, user: admin_user,
+                    available: true, photo: 'image.jpg')
+        Meal.create(name: 'Meal 3', description: 'Yummy dish', price: 8.99, user: admin_user, available: true,
+                    photo: 'image.jpg')
 
         get :index
         meals_response = JSON.parse(response.body)
@@ -30,8 +33,10 @@ RSpec.describe Api::V1::MealsController, type: :controller do
         sign_in normal_user
 
         # Create available meals for normal user
-        meal1 = Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user, available: true, photo:"image.png")
-        meal2 = Meal.create(name: 'Meal 2', description: 'Another tasty meal', price: 12.99, user: admin_user, available: true, photo:"image.png")
+        Meal.create(name: 'Meal 1', description: 'Delicious meal', price: 10.99, user: admin_user,
+                    available: true, photo: 'image.png')
+        Meal.create(name: 'Meal 2', description: 'Another tasty meal', price: 12.99, user: admin_user,
+                    available: true, photo: 'image.png')
 
         get :index
         meals_response = JSON.parse(response.body)

@@ -29,7 +29,7 @@ RSpec.describe 'User Sessions API', type: :request do
       expect(token).to be_present
       headers = { 'Authorization' => "Bearer #{token}" }
 
-      delete '/logout', headers: headers
+      delete('/logout', headers:)
       expect(response).to have_http_status(:ok)
     end
   end
