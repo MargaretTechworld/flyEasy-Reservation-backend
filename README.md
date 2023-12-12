@@ -24,7 +24,7 @@
   - [📝 License ](#-license-)
 
 
-# 📖 Workspace <a name="about-project"></a>
+# 📖 Meal Connect <a name="about-project"></a>
 
 The **Meal Connect** MealConnect is a vibrant web application designed for those who appreciate the art of cooking and the pleasure of savoring exquisite meals. Dive into a world of flavors, discover new recipes, and make customized reservations based on your taste buds. It is a Ruby on Rails app with a PostgreSQL database for the backend and React/Redux for the frontend.
 
@@ -104,6 +104,28 @@ And now you should be able to see the project running on [localhost:3000](http:/
 
 
 ## 👥 Authors <a name="authors"></a>
+
+👤 **Bahati Zirimwabagabo**
+
+- GitHub: [zbahati](https://github.com/zbahati)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/zirimwabagabo-bahati)
+
+👤 **Berhanu Baye**
+- GitHub: [@BranBayou](https://github.com/BranBayou)
+- Twitter: [@bran-baye](https://twitter.com/bran_baye)
+- LinkedIn: [Berhanu Baye](https://www.linkedin.com/in/bran-baye)
+
+👤 **Joy Tari**
+
+- GitHub: [Joy](https://github.com/JoyTaribagshaw)
+- Twitter: [Joy](https://twitter.com/JoyTariBagshaw)
+- LinkedIn: [Joy](https://linkedin.com/in/joytaribagshaw)
+
+👤 **Margaret Kojo**
+
+- GitHub: [MargaretTechworld](https://github.com/MargaretTechworld)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/margaret-kojo-musa/)
+- Twitter: [twitter](https://twitter.com/KojoMargaret)
 
 👤 **Essohanam TAMBANA**
 
