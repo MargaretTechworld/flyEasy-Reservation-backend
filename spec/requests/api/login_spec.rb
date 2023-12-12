@@ -25,7 +25,7 @@ RSpec.describe 'User Sessions API', type: :request do
 
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)['status']['code']).to eq(200)
-      token = response.headers['Authorization']&.split(' ')&.last
+      token = response.headers['Authorization']&.split&.last
       expect(token).to be_present
       headers = { 'Authorization' => "Bearer #{token}" }
 
