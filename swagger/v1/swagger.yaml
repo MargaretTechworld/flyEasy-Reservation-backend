@@ -1,0 +1,196 @@
+openapi: 3.0.1
+info:
+  title: MEAL CONNECT API V1
+  version: v1
+paths:
+  "/signup":
+    post:
+      summary: user created
+      parameters: []
+      responses:
+        '422':
+          description: unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+              required:
+              - email
+              - password
+              - name
+  "/api/v1/meals_available":
+    get:
+      summary: Get a list of available meals
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                - name: "Meal 1"
+                  description: "Delicious meal"
+                  price: 10.99
+                  available: true
+                  photo: "image.jpg"
+                - name: "Meal 2"
+                  description: "Another tasty meal"
+                  price: 12.99
+                  available: true
+                  photo: "image.jpg"
+                # Add more examples as needed
+  "/api/v1/meals/{id}/reservations":
+    post:
+      summary: Create a reservation for a meal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reserve_time:
+                  type: string
+                quantity:
+                  type: integer
+                spicy_level:
+                  type: string
+                reserve_date:
+                  type: string
+              required:
+              - reserve_time
+              - quantity
+              - spicy_level
+              - reserve_date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                reserve_time: "12:00"
+                quantity: 2
+                spicy_level: "medium"
+                reserve_date: "2023-01-01"
+                meal_id: 1
+                user_id: 1
+              # Add more examples as needed
+  "/api/v1/meals/{id}/update_availability":
+    patch:
+      summary: Update the availability of a meal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+  "/api/v1/reservations":
+    get:
+      summary: Get a list of reservations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                - id: 1
+                  reserve_time: "12:00"
+                  quantity: 2
+                  spicy_level: "medium"
+                  reserve_date: "2023-01-01"
+                  meal_id: 1
+                  user_id: 1
+                # Add more examples as needed
+    post:
+      summary: Create a reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reserve_time:
+                  type: string
+                quantity:
+                  type: integer
+                spicy_level:
+                  type: string
+                reserve_date:
+                  type: string
+              required:
+              - reserve_time
+              - quantity
+              - spicy_level
+              - reserve_date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 2
+                reserve_time: "13:00"
+                quantity: 3
+                spicy_level: "hot"
+                reserve_date: "2023-01-02"
+                meal_id: 2
+                user_id: 1
+              # Add more examples as needed
+  "/api/v1/reservations/{id}":
+    get:
+      summary: Get a reservation by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                reserve_time: "12:00"
+                quantity: 2
+                spicy_level: "medium"
+                reserve_date: "2023-01-01"
+                meal_id: 1
+                user_id: 1
+  "/api/v1/reservations/{id}":
+    delete:
+      summary: Delete a reservation by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+
+# Include other paths as needed
+
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
