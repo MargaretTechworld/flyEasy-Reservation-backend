@@ -72,9 +72,14 @@ In order to run this project you need:
 
 ## Setup
 
-Clone this repository to your desired folder:
+- Clone this repository to your desired folder:
 
 `git@github.com:MargaretTechworld/meal_connect-backend.git`
+
+- Remove config/master.key and config/credentials.yml.enc if they exist.
+- Run in the terminal: EDITOR=code rails credentials:edit 
+- Close the editor that opens.
+- This command will create a new master.key and credentials.yml.enc if they do not exist.
 
 ### Install
 
@@ -169,6 +174,8 @@ If you like this project just star it!
 We would like to thank the Microverse program for the knowledge and skills we have acquired in Modules 1-5.
 
 We are grateful to all previous project reviewers for their advice. Thanks to them we could build this app.
+
+We are grateful for the design by <a href="https://www.behance.net/muratk">Murat Korkmaz</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
