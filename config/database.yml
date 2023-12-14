@@ -92,6 +92,4 @@ test:
 #
 production:
   <<: *default
-  database: meal_connect_backend_production
-  username: meal_connect_backend_backend
-  password: <%= ENV["MEAL_CONNECT_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
