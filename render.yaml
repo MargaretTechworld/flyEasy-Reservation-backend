@@ -4,7 +4,7 @@ databases:
     user: recipe_app_newx_user
 
 services:
-  - type: Budjet
+  - type: web
     name: recipe-app
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
