@@ -1,18 +1,18 @@
 databases:
-  - name: recipe-app
-    databaseName: recipe_app_newx
-    user: recipe_app_newx_user
+  - name: Meal connect
+    databaseName: meal_connect
+    user: meal_connect_user
 
 services:
   - type: web
-    name: recipe-app
+    name: Meal connect
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: recipe-app
+          name: Meal connect
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
