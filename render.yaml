@@ -1,7 +1,7 @@
 databases:
   - name: Meal connect
-    databaseName: meal_connect
-    user: meal_connect_user
+    databaseName: meal_connect_ikq5
+    user: meal_connect_ikq5_user
 
 services:
   - type: web
